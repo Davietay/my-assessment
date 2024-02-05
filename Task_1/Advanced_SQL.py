@@ -1,5 +1,3 @@
-#hi
-
 """
 The database loan.db consists of 3 tables: 
    1. customers - table containing customer data
