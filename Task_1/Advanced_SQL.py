@@ -52,7 +52,8 @@ def question_2():
         WHERE
             l.ApprovalStatus = 'Rejected'
         GROUP BY
-            Province;""" 
+            Province;
+            """ 
     return qry
 
 
