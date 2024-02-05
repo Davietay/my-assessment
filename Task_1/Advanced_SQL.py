@@ -31,7 +31,28 @@ def question_2():
     
     # Make use of a JOIN to return a breakdown of the number of 'RejectedApplications' per 'Province'. 
 
-    qry = """___""" 
+    qry = """    SELECT
+        CASE
+            WHEN Region = 'EC' THEN 'EasternCape'
+            WHEN Region = 'GT' THEN 'Gauteng'
+            WHEN Region = 'WC' THEN 'WesternCape'
+            WHEN Region = 'NW' THEN 'NorthWest'
+            WHEN Region = 'NC' THEN 'NorthernCape'
+            WHEN Region = 'NL' THEN 'Natal'
+            WHEN Region = 'FS' THEN 'FreeState'
+            WHEN Region = 'LP' THEN 'Limpopo'
+            WHEN Region = 'MP' THEN 'Mpumalanga'
+            ELSE c.Region
+        END as Province,
+        COUNT(*) as RejectedApplications
+        FROM
+            customers c
+        JOIN
+            loans l ON c.CustomerID = l.CustomerID
+        WHERE
+            l.ApprovalStatus = 'Rejected'
+        GROUP BY
+            Province;""" 
     return qry
 
 
